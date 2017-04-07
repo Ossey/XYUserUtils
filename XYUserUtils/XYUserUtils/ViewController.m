@@ -10,6 +10,7 @@
 #import "XYUserDefaults.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
@@ -19,6 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    /*
     NSDictionary *dict = @{@"js": @[@"1", @"2", @"3"]};
     NSError *error = nil;
     NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
@@ -38,6 +40,16 @@
     } else {
         NSLog(@"%@", d1);
     }
+     */
+   
+    
+    // 示例: 保存一张图片到钥匙串, 卸载demo后，再重新安装，照片还在
+    //NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:@"1475134424301544"]);
+    //NSError *error = nil;
+    //[[XYUserDefaults userDefaults] setObject:imageData forKey:@"image" error:&error];
+    NSData *d = [[XYUserDefaults userDefaults] objectForKey:@"image"];
+    UIImage *image = [UIImage imageWithData:d];
+    self.imageView.image = image;
     
 }
 
